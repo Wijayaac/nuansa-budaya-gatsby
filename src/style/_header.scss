@@ -1,0 +1,36 @@
+.header {
+  &-logo {
+    font-family: $fontFamily-serif;
+    font-size: 3.25rem;
+  }
+  &-hm {
+    display: none;
+    @include media-breakpoint-up(md) {
+      display: block;
+    }
+  }
+  &-hd {
+    display: block;
+    @include media-breakpoint-up(md) {
+      display: none;
+    }
+  }
+}
+.sticky-top {
+  transition: all 0.25s ease-in;
+}
+
+/* style for when sitcky is applied */
+.stuck {
+  & .navbar {
+    &.sticky-top {
+      background-color: #13101c !important;
+      padding-top: 0.625rem !important;
+      padding-bottom: 0.5625rem !important;
+      font-size: 1.125rem !important;
+    }
+    &.header-hm {
+      display: none;
+    }
+  }
+}

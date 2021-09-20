@@ -1,10 +1,26 @@
-import * as React from "react"
+import React, { useEffect } from "react"
 import { Link } from "gatsby"
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
   let header
+  let AOS
+
+  useEffect(() => {
+    const AOS = require("aos")
+    AOS.init(
+      {
+        once: true,
+      },
+      []
+    )
+    return () => {
+      if (AOS) {
+        AOS.refresh()
+      }
+    }
+  }, [])
 
   if (isRootPath) {
     header = (

@@ -1,0 +1,6 @@
+.about {
+  max-width: 20rem;
+  @include media-breakpoint-up(md) {
+    max-width: 54rem;
+  }
+}
