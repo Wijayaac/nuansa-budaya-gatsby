@@ -6,6 +6,9 @@ import Seo from "components/seo"
 import Hero from "components/Hero"
 import About from "components/About"
 import Card from "components/Cards/Card"
+import BigCard from "components/Cards/BigCard"
+import VerticalCard from "components/Cards/VerticalCard"
+import LatestCard from "components/Cards/LatestCard"
 
 const heroConstants = {
   title: "Welcome to Nuansa Budaya",
@@ -83,189 +86,11 @@ const Index: React.FC<PageProps> = ({ location }) => {
                 <Card title="popular collection" />
               </div>
               <div className="col col-md-6 feature-trending order-0 order-md-1">
-                <h2 className="my-3 my-md-4">Our Trending</h2>
-                <div className="card mb-2 mb-md-4">
-                  <img
-                    src="/images/mathis.jpg"
-                    className="card-img-top"
-                    alt="image-testing-2"
-                  />
-                  <div className="card-body">
-                    <a href="#" className="text-decoration-none feature-title">
-                      <h6 className="card-subtitle text-danger">Games</h6>
-                      <h5 className="card-title text-dark">Card title</h5>
-                      <p className="card-text text-muted">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
-                      </p>
-                    </a>
-                  </div>
-                </div>
-                <div
-                  className="
-                card
-                mb-2 mb-md-4
-                flex-md-row
-                align-items-center
-                px-md-2 px-1
-              "
-                >
-                  <div className="card-img-top flex-fill feature-img">
-                    <img
-                      src="/images/mathis.jpg"
-                      className="img-fluid"
-                      alt="image-testing-2"
-                    />
-                  </div>
-                  <div className="card-body flex-fill">
-                    <a href="#" className="text-decoration-none feature-title">
-                      <h6 className="card-subtitle text-danger">Games</h6>
-                      <h5 className="card-title text-dark">Card title</h5>
-                      <p className="card-text text-muted">
-                        Some quick example text to build on the card title and
-                        make up the bulk of the card's content.
-                      </p>
-                    </a>
-                  </div>
-                </div>
+                <BigCard title="our trending" />
+                <VerticalCard />
               </div>
               <div className="col col-md-3 feature-latest order-2 border-md-left">
-                <h4 className="my-3 my-md-4">Latest Collection</h4>
-                <div
-                  className="
-                card
-                mb-2 mb-md-4
-                px-md-2 px-1
-                py-1 py-md-2
-                flex-md-row-reverse
-                text-left
-                align-items-center
-              "
-                >
-                  <div className="card-img-top flex-fill feature-img">
-                    <img
-                      src="/images/ruben-hutabarat.jpg"
-                      className="img-fluid"
-                      alt="image-testing-3"
-                    />
-                  </div>
-                  <div className="card-body flex-fill">
-                    <a href="#" className="text-decoration-none feature-title">
-                      <h6 className="card-title">Lorem ipsum dolor sit amet</h6>
-                      <p className="card-text text-muted">
-                        Monday, 28 Aug 2021.
-                      </p>
-                    </a>
-                  </div>
-                </div>
-                <div
-                  className="
-                card
-                mb-2 mb-md-4
-                px-md-2 px-1
-                py-1 py-md-2
-                flex-md-row-reverse
-                text-left
-                align-items-center
-              "
-                >
-                  <div className="card-img-top flex-fill feature-img">
-                    <img
-                      src="/images/ruben-hutabarat.jpg"
-                      className="img-fluid"
-                      alt="image-testing-3"
-                    />
-                  </div>
-                  <div className="card-body flex-fill">
-                    <a href="#" className="text-decoration-none feature-title">
-                      <h6 className="card-title">Lorem ipsum dolor sit amet</h6>
-                      <p className="card-text text-muted">
-                        Monday, 28 Aug 2021.
-                      </p>
-                    </a>
-                  </div>
-                </div>
-                <div
-                  className="
-                card
-                mb-2 mb-md-4
-                px-md-2 px-1
-                py-1 py-md-2
-                flex-md-row-reverse
-                text-left
-                align-items-center
-              "
-                >
-                  <div className="card-img-top flex-fill feature-img">
-                    <img
-                      src="/images/ruben-hutabarat.jpg"
-                      className="img-fluid"
-                      alt="image-testing-3"
-                    />
-                  </div>
-                  <div className="card-body flex-fill">
-                    <a href="#" className="text-decoration-none feature-title">
-                      <h6 className="card-title">Lorem ipsum dolor sit amet</h6>
-                      <p className="card-text text-muted">
-                        Monday, 28 Aug 2021.
-                      </p>
-                    </a>
-                  </div>
-                </div>
-                <div
-                  className="
-                card
-                mb-2 mb-md-4
-                px-md-2 px-1
-                py-1 py-md-2
-                flex-md-row-reverse
-                text-left
-                align-items-center
-              "
-                >
-                  <div className="card-img-top flex-fill feature-img">
-                    <img
-                      src="/images/ruben-hutabarat.jpg"
-                      className="img-fluid"
-                      alt="image-testing-3"
-                    />
-                  </div>
-                  <div className="card-body flex-fill">
-                    <a href="#" className="text-decoration-none feature-title">
-                      <h6 className="card-title">Lorem ipsum dolor sit amet</h6>
-                      <p className="card-text text-muted">
-                        Monday, 28 Aug 2021.
-                      </p>
-                    </a>
-                  </div>
-                </div>
-                <div
-                  className="
-                card
-                mb-2 mb-md-4
-                px-md-2 px-1
-                py-1 py-md-2
-                flex-md-row-reverse
-                text-left
-                align-items-center
-              "
-                >
-                  <div className="card-img-top flex-fill feature-img">
-                    <img
-                      src="/images/ruben-hutabarat.jpg"
-                      className="img-fluid"
-                      alt="image-testing-3"
-                    />
-                  </div>
-                  <div className="card-body flex-fill">
-                    <a href="#" className="text-decoration-none feature-title">
-                      <h6 className="card-title">Lorem ipsum dolor sit amet</h6>
-                      <p className="card-text text-muted">
-                        Monday, 28 Aug 2021.
-                      </p>
-                    </a>
-                  </div>
-                </div>
+                <LatestCard title="latest collection" />
               </div>
             </div>
           </div>

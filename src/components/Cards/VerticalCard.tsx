@@ -1,9 +1,9 @@
 import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage as Image, getImage } from "gatsby-plugin-image"
-import { useStaticQuery, graphql } from "gatsby"
 
-interface Posts {
-  featured: {
+interface Props {
+  trending: {
     edges: {
       node: {
         id: string
@@ -14,22 +14,18 @@ interface Posts {
         frontmatter: {
           title: string
           date: Date
-          image: any
+          image: any | undefined
         }
       }
     }[]
   }
 }
 
-interface Props {
-  title: string
-}
-
-const Card: React.FC<Props> = ({ title }) => {
-  const { featured } = useStaticQuery<Posts>(graphql`
+const VerticalCard = () => {
+  const { trending } = useStaticQuery<Props>(graphql`
     {
-      featured: allMarkdownRemark(
-        sort: { fields: frontmatter___date, order: DESC }
+      trending: allMarkdownRemark(
+        sort: { fields: frontmatter___date, order: ASC }
       ) {
         edges {
           node {
@@ -52,22 +48,31 @@ const Card: React.FC<Props> = ({ title }) => {
       }
     }
   `)
-
   return (
     <>
-      <h2 className="my-3 my-md-4 text-capitalize">{title}</h2>
-      {!featured && (
-        <div className="loading">
+      {!trending && (
+        <div className="">
           <h2>Loading</h2>
         </div>
       )}
-      {featured &&
-        featured.edges.map(post => {
-          const gambar = getImage(post.node.frontmatter.image)!
+      {trending &&
+        trending.edges.map(post => {
+          const image = getImage(post.node.frontmatter.image)!
           return (
-            <div key={post.node.id} className="card mb-2 mb-md-4">
-              <Image image={gambar} alt={post.node.fields.slug} />
-              <div className="card-body">
+            <div
+              key={post.node.id}
+              className="
+                card
+                mb-2 mb-md-4
+                flex-md-row
+                align-items-center
+                px-md-2 px-1
+              "
+            >
+              <div className="card-img-top flex-fill feature-img">
+                <Image image={image} alt={post.node.frontmatter.title} />
+              </div>
+              <div className="card-body flex-fill">
                 <a href="#" className="text-decoration-none feature-title">
                   <h6 className="card-subtitle text-danger">
                     {post.node.frontmatter.date}
@@ -85,4 +90,4 @@ const Card: React.FC<Props> = ({ title }) => {
   )
 }
 
-export default Card
+export default VerticalCard
