@@ -21,11 +21,7 @@ interface Posts {
   }
 }
 
-interface Props {
-  title: string
-}
-
-const Card: React.FC<Props> = ({ title }) => {
+const Card = () => {
   const { featured } = useStaticQuery<Posts>(graphql`
     {
       featured: allMarkdownRemark(
@@ -55,7 +51,6 @@ const Card: React.FC<Props> = ({ title }) => {
 
   return (
     <>
-      <h2 className="my-3 my-md-4 text-capitalize">{title}</h2>
       {!featured && (
         <div className="loading">
           <h2>Loading</h2>
@@ -65,18 +60,20 @@ const Card: React.FC<Props> = ({ title }) => {
         featured.edges.map(post => {
           const gambar = getImage(post.node.frontmatter.image)!
           return (
-            <div key={post.node.id} className="card mb-2 mb-md-4">
-              <Image image={gambar} alt={post.node.fields.slug} />
-              <div className="card-body">
-                <a href="#" className="text-decoration-none feature-title">
-                  <h6 className="card-subtitle text-danger">
-                    {post.node.frontmatter.date}
-                  </h6>
-                  <h5 className="card-title text-dark">
-                    {post.node.frontmatter.title}
-                  </h5>
-                  <p className="card-text text-muted">{post.node.excerpt}</p>
-                </a>
+            <div key={post.node.id} className="col col topic-item">
+              <div className="card mb-2 mb-md-4">
+                <Image image={gambar} alt={post.node.fields.slug} />
+                <div className="card-body">
+                  <a href="#" className="text-decoration-none feature-title">
+                    <h6 className="card-subtitle text-danger">
+                      {post.node.frontmatter.date}
+                    </h6>
+                    <h5 className="card-title text-dark">
+                      {post.node.frontmatter.title}
+                    </h5>
+                    <p className="card-text text-muted">{post.node.excerpt}</p>
+                  </a>
+                </div>
               </div>
             </div>
           )
