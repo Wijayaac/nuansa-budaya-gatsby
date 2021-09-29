@@ -1,33 +1,16 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage as Image, getImage } from "gatsby-plugin-image"
+import { ReturnedPostsData } from "components/hooks/useQuery"
 
 interface Props {
   title: string
 }
-interface Post {
-  popular: {
-    edges: {
-      node: {
-        id: string
-        fields: {
-          slug: string
-        }
-        excerpt: string
-        frontmatter: {
-          title: string
-          date: Date
-          image: any | undefined
-        }
-      }
-    }[]
-  }
-}
 
 const BigCard: React.FC<Props> = ({ title }) => {
-  const { popular } = useStaticQuery<Post>(graphql`
+  const { data } = useStaticQuery<ReturnedPostsData>(graphql`
     {
-      popular: allMarkdownRemark(
+      data: allMarkdownRemark(
         sort: { fields: frontmatter___date, order: DESC }
         limit: 1
       ) {
@@ -53,12 +36,12 @@ const BigCard: React.FC<Props> = ({ title }) => {
     }
   `)
   // simplify the post we get and extract the image expect object
-  const post = popular.edges.map(({ node }) => node)[0]
+  const post = data.edges.map(({ node }) => node)[0]
   const image = getImage(post.frontmatter.image)!
 
   return (
     <>
-      <h2 className="my-3 my-md-4 text-capitalize">{title}</h2>
+      <h2 className="my-2 my-md-3 text-capitalize">{title}</h2>
       {!post && (
         <div className="">
           <h2>loading</h2>
